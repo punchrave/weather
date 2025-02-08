@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class='weather-widget'>
+    <div class='search-bar'>
+      <input id="city-input" placeholder='Aktobe'>
+      <span id="search-button">&#128269;</span>
+    </div>
+    <div class='weather-info'>
+      <div class="top-info">
+        <div class='temperature'>14°</div>
+        <div class='cloud-icon'>&#9729;</div>
+        <div class='weather-description'></div>
+        <div class="sun-info">
+          <div class="sunrise">Рассвет: <span id="sunrise-time"></span></div>
+          <div class="sunset">Закат: <span id="sunset-time"></span></div>
+        </div>
+        <div class="hourly-forecast">
+          <h4>Прогноз на ближайшие часы:</h4>
+          <div class="forecast-container">
+            
+          </div>
+        </div>        
+      </div>
+      <div class="bottom-group"> 
+        <div class='city-name'>Aktobe</div>
+        <button class='favorite' id='heart'>&#9825;</button>
+      </div>
+    </div>
+    <div class='locations-list'>
+      <h3>Added Locations</h3>
+      <ul>
+        <!-- Добавленные города будут отображаться здесь -->
+      </ul>
+    </div>
+  </div>
+  <script src='main.js'></script>
+</body>
+</html>

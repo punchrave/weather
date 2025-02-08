@@ -1,0 +1,214 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(234, 234, 226);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden; /* Важно для предотвращения двойной прокрутки */
+}
+
+.weather-widget {
+  background-color: white;
+  border: 1px solid black;
+  width: 400px;
+  max-height: 90vh; /* Ограничиваем высоту виджета */
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Скрываем лишние части */
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 5px 10px;
+}
+
+.search-bar input {
+  width: 80%;
+  height: 20px;
+  border: none;
+  padding: 5px;
+}
+
+.search-bar input:focus {
+  outline: none;
+}
+
+.search-bar span {
+  cursor: pointer;
+}
+
+.weather-info {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  overflow-y: auto; /* Включаем прокрутку для погоды */
+  box-sizing: border-box;
+}
+
+.top-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-info .temperature {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.weather-info .cloud-icon img {
+  height: 30px;
+}
+
+.weather-info .weather-description {
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+.bottom-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.weather-info .city-name {
+  font-size: 14px;
+}
+
+.weather-info .favorite {
+  font-size: 20px;
+  border: none;
+}
+
+.locations-list {
+  padding: 5px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Включаем прокрутку для списка избранных */
+  max-height: 150px; /* Ограничение по высоте */
+  box-sizing: border-box;
+}
+
+.locations-list h3 {
+  margin: 0 0 10px 0;
+}
+
+.locations-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.locations-list ul li {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.locations-list ul li button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.sun-info {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.sun-info .sunrise,
+.sun-info .sunset {
+  margin: 0px;
+  font-size: 14px;
+}
+
+.sun-info .sunrise {
+  color: #f39c12;
+}
+
+.sun-info .sunset {
+  color: #e74c3c;
+}
+
+.hourly-forecast {
+  margin-top: 15px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Включаем прокрутку для прогноза */
+  max-height: 200px; /* Ограничиваем высоту контейнера */
+  width: 100%;
+}
+
+.hourly-forecast h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.hourly-forecast .forecast-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.hourly-forecast .forecast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hourly-forecast .forecast-item img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.hourly-forecast .forecast-item .time {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.hourly-forecast .forecast-item .temperature {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.hourly-forecast .forecast-item .description {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Добавляем общую прокрутку для всего виджета */
+.weather-widget {
+  overflow: hidden;
+}
+
+.weather-widget:hover {
+  overflow-y: scroll; /* Показываем прокрутку при наведении */
+}
+
