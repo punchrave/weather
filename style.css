@@ -1,107 +1,168 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: rgb(234, 234, 226);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  overflow: hidden; /* Важно для предотвращения двойной прокрутки */
+  color: #333;
 }
 
 .weather-widget {
-  background-color: white;
-  border: 1px solid black;
-  width: 400px;
-  max-height: 90vh; /* Ограничиваем высоту виджета */
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  width: 380px;
+  max-height: 90vh;
   min-height: 230px;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Скрываем лишние части */
-  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.weather-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .search-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
-  padding: 5px 10px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.7);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .search-bar input {
   width: 80%;
-  height: 20px;
+  height: 30px;
   border: none;
-  padding: 5px;
+  padding: 8px 15px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 14px;
+  transition: all 0.3s;
 }
 
 .search-bar input:focus {
   outline: none;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 0 2px rgba(100, 149, 237, 0.3);
 }
 
 .search-bar span {
   cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  transition: transform 0.3s;
+}
+
+.search-bar span:hover {
+  transform: scale(1.1);
+  color: #6495ed;
 }
 
 .weather-info {
-  padding: 5px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  overflow-y: auto; /* Включаем прокрутку для погоды */
-  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .top-info {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .weather-info .temperature {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 48px;
+  font-weight: 600;
+  margin: 10px 0;
+  color: #2c3e50;
+  position: relative;
+}
+
+.weather-info .temperature::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #6495ed, #ff7e5f);
+  margin: 10px auto;
+  border-radius: 3px;
 }
 
 .weather-info .cloud-icon img {
-  height: 30px;
+  height: 60px;
+  width: 60px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .weather-info .weather-description {
-  font-size: 12px;
-  margin-top: 3px;
+  font-size: 14px;
+  margin: 5px 0;
+  text-transform: capitalize;
+  color: #7f8c8d;
 }
 
 .bottom-group {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .weather-info .city-name {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2c3e50;
 }
 
 .weather-info .favorite {
-  font-size: 20px;
+  font-size: 24px;
   border: none;
+  background: none;
+  cursor: pointer;
+  color: #ccc;
+  transition: all 0.3s;
+}
+
+.weather-info .favorite:hover {
+  transform: scale(1.1);
+}
+
+.weather-info .favorite.active {
+  color: #ff4757;
 }
 
 .locations-list {
-  padding: 5px;
+  padding: 15px 20px;
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Включаем прокрутку для списка избранных */
-  max-height: 150px; /* Ограничение по высоте */
-  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 150px;
+  background: rgba(245, 245, 245, 0.7);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .locations-list h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  color: #2c3e50;
+  font-weight: 500;
 }
 
 .locations-list ul {
@@ -110,32 +171,68 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 8px;
 }
 
 .locations-list ul li {
-  margin-bottom: 2px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.locations-list ul li:hover {
+  background: rgba(100, 149, 237, 0.1);
+  transform: translateX(5px);
 }
 
 .locations-list ul li button {
   background: none;
   border: none;
-  color: red;
+  color: #ff6b81;
   cursor: pointer;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.locations-list ul li button:hover {
+  background: rgba(255, 107, 129, 0.1);
 }
 
 .sun-info {
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 14px;
   text-align: center;
+  display: flex;
+  gap: 20px;
 }
 
 .sun-info .sunrise,
 .sun-info .sunset {
-  margin: 0px;
+  margin: 0;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sun-info .sunrise::before {
+  content: '☀️';
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.sun-info .sunset::before {
+  content: '🌇';
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 .sun-info .sunrise {
@@ -147,26 +244,40 @@ body {
 }
 
 .hourly-forecast {
-  margin-top: 15px;
+  margin-top: 20px;
   font-size: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* Включаем прокрутку для прогноза */
-  max-height: 200px; /* Ограничиваем высоту контейнера */
   width: 100%;
 }
 
 .hourly-forecast h4 {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+  position: relative;
+  display: inline-block;
+}
+
+.hourly-forecast h4::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #6495ed, transparent);
 }
 
 .hourly-forecast .forecast-container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
   justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 5px;
 }
 
 .hourly-forecast .forecast-item {
@@ -174,41 +285,70 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 80px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.hourly-forecast .forecast-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .hourly-forecast .forecast-item img {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 5px;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
 }
 
 .hourly-forecast .forecast-item .time {
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #2c3e50;
 }
 
 .hourly-forecast .forecast-item .temperature {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin-bottom: 5px;
+  color: #3498db;
 }
 
-.hourly-forecast .forecast-item .description {
+.hourly-forecast .forecast-item .feels-like {
   font-size: 12px;
-  color: #777;
+  color: #7f8c8d;
 }
 
-/* Добавляем общую прокрутку для всего виджета */
-.weather-widget {
-  overflow: hidden;
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.weather-widget:hover {
-  overflow-y: scroll; /* Показываем прокрутку при наведении */
+.weather-info > * {
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 149, 237, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 149, 237, 0.7);
+}
